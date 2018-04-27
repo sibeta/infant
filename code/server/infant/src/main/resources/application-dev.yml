@@ -1,0 +1,17 @@
+server:
+  context-path: /infant
+  port: 8081
+logging:
+  path: /Users/sibeta/logs/
+  pattern:
+    console: "%d - %msg%n"
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/infant?characterEncoding=utf-8&useSSL=false
+    username: admin
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

@@ -1,0 +1,7 @@
+server:
+  context-path: /infant
+  port: 8080
+logging:
+  path: /Users/sibeta/logs/
+  pattern:
+    console: "%d - %msg%n"
