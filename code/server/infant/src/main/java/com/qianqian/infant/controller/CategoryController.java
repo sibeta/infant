@@ -21,8 +21,9 @@ import javax.validation.Valid;
  * 类目相关
  */
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/api/category")
 @Slf4j
+@CrossOrigin
 public class CategoryController {
 
     @Autowired
@@ -37,7 +38,8 @@ public class CategoryController {
      * @return
      */
     @GetMapping(value = "/list")
-    public ResultVO<Page<Category>> list(@RequestParam("page") Integer page, @RequestParam("size") Integer size) {
+    public ResultVO<Page<Category>> list(@RequestParam(value = "page", defaultValue = "1") Integer page,
+                                         @RequestParam(value = "size", defaultValue = "7") Integer size) {
         PageRequest request = new PageRequest(page - 1, size);
         Page<Category> categoryPage = categoryService.findList(request);
 
