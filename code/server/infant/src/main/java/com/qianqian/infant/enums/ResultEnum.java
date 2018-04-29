@@ -8,6 +8,7 @@ public enum ResultEnum {
     PARAM_ERROR(1, "参数错误"),
 
     CATEGORY_NOT_EXIST(20, "品类不存在"),
+    CUSTOMER_NOT_EXIST(21, "客户不存在"),
     ;
 
     private Integer code;
