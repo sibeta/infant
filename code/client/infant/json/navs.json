@@ -1,0 +1,11 @@
+[{
+	"title" : "后台首页",
+	"icon" : "icon-computer",
+	"href" : "page/main.html",
+	"spread" : false
+},{
+	"title" : "品类管理",
+	"icon" : "icon-text",
+	"href" : "page/admin/category/categoryList.html",
+	"spread" : false
+}]

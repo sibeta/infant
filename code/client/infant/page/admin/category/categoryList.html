@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>品类管理</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="../../../layui/css/layui.css" media="all" />
+</head>
+<body class="childrenBody">
+	<blockquote class="layui-elem-quote news_search">
+		<div class="layui-inline">
+			<a class="layui-btn categoryAdd_btn" style="background-color:#5FB878">添加</a>
+		</div>
+	</blockquote>
+	<div class="layui-form category_list">
+	  	<table class="layui-table">
+		    <colgroup>
+				<col>
+				<col>
+				<col width="40%">
+				<col width="14%">
+		    </colgroup>
+		    <thead>
+				<tr>
+					<th style="text-align:left;">品类编号</th>
+					<th>品类名称</th>
+					<th>备注</th>
+					<th>操作</th>
+				</tr> 
+		    </thead>
+		    <tbody class="category_content"></tbody>
+		</table>
+	</div>
+	<div id="page"></div>
+	
+	<script type="text/javascript" src="../../../../layui/layui.js"></script>
+	<script type="text/javascript" src="categoryList.js"></script>
+</body>
+</html>
