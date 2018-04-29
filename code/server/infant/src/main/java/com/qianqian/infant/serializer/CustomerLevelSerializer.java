@@ -12,8 +12,8 @@ import java.io.IOException;
 public class CustomerLevelSerializer extends JsonSerializer<Integer> {
 
     @Override
-    public void serialize(Integer role, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException, JsonProcessingException {
-        String value = EnumUtil.getByCode(role, CustomerLevelEnum.class).getMessage();
+    public void serialize(Integer level, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException, JsonProcessingException {
+        String value = EnumUtil.getByCode(level, CustomerLevelEnum.class).getMessage();
         jsonGenerator.writeString(value);
     }
 

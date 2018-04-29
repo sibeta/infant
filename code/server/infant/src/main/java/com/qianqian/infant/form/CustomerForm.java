@@ -11,7 +11,7 @@ import java.util.Date;
 @Data
 public class CustomerForm {
 
-    private Integer categoryId;
+    private Integer customerId;
 
     @NotEmpty(message = "客户名称必填")
     private String customerName;
