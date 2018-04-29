@@ -18,8 +18,7 @@ layui.config({
 	})
  
 	//操作
-	$("body").on("click",".category_edit",function(){  //编辑
-		debugger;
+	$("body").on("click",".category_edit",function(){
         var categoryId = $(this).attr("data-id");
         var categoryList = categoryData.content;
         for(var i = 0; i < categoryList.length; i++){

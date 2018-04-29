@@ -8,4 +8,9 @@
 	"icon" : "icon-text",
 	"href" : "page/admin/category/categoryList.html",
 	"spread" : false
+},{
+	"title" : "客户管理",
+	"icon" : "icon-text",
+	"href" : "page/admin/customer/customerList.html",
+	"spread" : false
 }]
