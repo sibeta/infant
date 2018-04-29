@@ -77,6 +77,7 @@ layui.config({
                     +'<td>'+currData[i].wechatName+'</td>'
                     +'<td>'+currData[i].babyBirthday+'</td>'
                     +'<td>'+currData[i].postAddress+'</td>'
+                    +'<td>'+currData[i].note+'</td>'
                     +'<td>'
                     +  '<a class="layui-btn layui-btn-mini customer_edit" data-id="'+currData[i].customerId+'"><i class="iconfont icon-edit"></i> 编辑</a>'
                     +  '<a class="layui-btn layui-btn-danger layui-btn-mini customer_del" data-id="'+currData[i].customerId+'"><i class="layui-icon">&#xe640;</i> 删除</a>'

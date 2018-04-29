@@ -19,6 +19,7 @@ layui.config({
         $(".wechatName").val(customer.wechatName);
         $(".babyBirthday").val(customer.babyBirthday);
         $(".postAddress").val(customer.postAddress);
+        $(".note").val(customer.note);
     }
 
  	form.on("submit(addLinks)",function(data){
@@ -29,6 +30,7 @@ layui.config({
         var wechatName = $(".wechatName").val();
         var babyBirthday = $(".babyBirthday").val();
         var postAddress = $(".postAddress").val();
+        var note = $(".note").val();
 
 
         var formData = {};
@@ -41,6 +43,7 @@ layui.config({
         formData.wechatName = wechatName;
         formData.babyBirthday = babyBirthday;
         formData.postAddress = postAddress;
+        formData.note = note;
 
         //弹出loading
         var index = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
