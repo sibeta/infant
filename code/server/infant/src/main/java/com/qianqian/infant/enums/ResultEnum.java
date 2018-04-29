@@ -9,6 +9,7 @@ public enum ResultEnum {
 
     CATEGORY_NOT_EXIST(20, "品类不存在"),
     CUSTOMER_NOT_EXIST(21, "客户不存在"),
+    STOCK_NOT_EXIST(22, "进货记录不存在"),
     ;
 
     private Integer code;

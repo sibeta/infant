@@ -10,12 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
-@Entity
 @Data
 public class CustomerVO {
 
-    @Id
-    @GeneratedValue
     private Integer customerId;
 
     @JsonSerialize(using = CustomerLevelSerializer.class)
