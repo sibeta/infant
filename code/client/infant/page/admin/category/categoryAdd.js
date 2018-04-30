@@ -12,7 +12,7 @@ layui.config({
         $(".categoryDesc").val(category.categoryDesc);
 	}
 
- 	form.on("submit(addLinks)",function(data){
+ 	form.on("submit(addCategory)",function(data){
         var categoryId = $(".categoryId").val();
  		var categoryName = $(".categoryName").val();
  		var categoryDesc = $(".categoryDesc").val();

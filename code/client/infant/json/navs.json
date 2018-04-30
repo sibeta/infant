@@ -13,4 +13,9 @@
 	"icon" : "icon-text",
 	"href" : "page/admin/customer/customerList.html",
 	"spread" : false
+},{
+	"title" : "进货管理",
+	"icon" : "icon-text",
+	"href" : "page/admin/stock/stockList.html",
+	"spread" : false
 }]

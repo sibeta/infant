@@ -3,11 +3,9 @@ package com.qianqian.infant.VO;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.qianqian.infant.serializer.CategorySerializer;
 import com.qianqian.infant.serializer.DateSerializer;
+import com.qianqian.infant.serializer.TypeSerializer;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.util.Date;
 
 @Data
@@ -24,6 +22,7 @@ public class StockVO {
     /**
      * 类型
      */
+    @JsonSerialize(using = TypeSerializer.class)
     private Integer type;
 
     /**

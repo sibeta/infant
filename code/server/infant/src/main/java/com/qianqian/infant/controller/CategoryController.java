@@ -16,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * 类目相关
@@ -28,6 +29,12 @@ public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @GetMapping(value = "/listcategory")
+    public ResultVO<List<Category>> listCategory() {
+        List<Category> categoryList = categoryService.findAll();
+        return ResultVOUtil.success(categoryList);
+    }
 
     /**
      * 分页获取类目列表

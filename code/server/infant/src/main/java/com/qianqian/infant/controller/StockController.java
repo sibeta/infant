@@ -1,15 +1,11 @@
 package com.qianqian.infant.controller;
 
-import com.qianqian.infant.VO.CustomerVO;
 import com.qianqian.infant.VO.ResultVO;
 import com.qianqian.infant.VO.StockVO;
-import com.qianqian.infant.entity.Customer;
 import com.qianqian.infant.entity.Stock;
 import com.qianqian.infant.enums.ResultEnum;
 import com.qianqian.infant.exception.InfantException;
-import com.qianqian.infant.form.CustomerForm;
 import com.qianqian.infant.form.StockForm;
-import com.qianqian.infant.service.CustomerService;
 import com.qianqian.infant.service.StockService;
 import com.qianqian.infant.utils.ResultVOUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -63,7 +59,7 @@ public class StockController {
     }
 
     /**
-     * 添加/更新类目
+     * 添加/更新
      * @param stockForm
      *          stockForm
      * @param bindingResult

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>添加进货记录</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="../../../layui/css/layui.css" media="all" />
+</head>
+<body class="childrenBody">
+	<form class="layui-form" style="width:80%;">
+		<div class="layui-form-item">
+			<label class="layui-form-label">品类名称</label>
+			<div class="layui-input-block">
+				<select class="categoryList categoryId" lay-verify="required">
+					<option value="0">无</option>
+				</select>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">类型</label>
+			<div class="layui-input-block">
+				<select class="type" lay-verify="required">
+					<option value="0">无</option>
+					<option value="1">小码</option>
+					<option value="2">中码</option>
+					<option value="3">大码</option>
+					<option value="4">加大码</option>
+					<option value="5">加加大码</option>
+					<option value="6">加加加大码</option>
+				</select>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">数量</label>
+			<div class="layui-input-block">
+				<input type="number" class="layui-input amount" lay-verify="required" placeholder="请输入数量">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">单价</label>
+			<div class="layui-input-block">
+				<input type="number" class="layui-input unitPrice" lay-verify="required" placeholder="请输入单价">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">额外费用</label>
+			<div class="layui-input-block">
+				<input type="number" class="layui-input extraCharges" lay-verify="required" placeholder="请输入额外费用">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">进货时间</label>
+			<div class="layui-input-block">
+				<input type="text" class="layui-input stockDate" lay-verify="required|date" onclick="layui.laydate({elem:this})">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">到货时间</label>
+			<div class="layui-input-block">
+				<input type="text" class="layui-input aogDate" lay-verify="required|date" onclick="layui.laydate({elem:this})">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">备注</label>
+			<div class="layui-input-block">
+				<textarea placeholder="请输入备注" class="layui-textarea note"></textarea>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn" lay-submit="" lay-filter="addStock">立即提交</button>
+				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+		    </div>
+		</div>
+		<input type="hidden" class="layui-input stockId" />
+	</form>
+	<script type="text/javascript" src="../../../layui/layui.js"></script>
+	<script type="text/javascript" src="stockAdd.js"></script>
+</body>
+</html>

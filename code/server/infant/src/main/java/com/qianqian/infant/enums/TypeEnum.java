@@ -11,7 +11,7 @@ public enum TypeEnum implements CodeEnum{
     L(3, "大码"),
     XL(4, "加大码"),
     XXL(5, "加加大码"),
-    XXXL(5, "加加加大码"),
+    XXXL(6, "加加加大码"),
     ;
 
     private Integer code;

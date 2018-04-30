@@ -1,9 +1,10 @@
 layui.config({
     base : "../../../js/"
-}).use(['form','layer','jquery','config'],function(){
+}).use(['form','layer','jquery','laydate','config'],function(){
 	var form = layui.form(),
 		layer = parent.layer === undefined ? layui.layer : parent.layer,
 		$ = layui.jquery,
+        laydate = layui.laydate,
 		config = layui.config;
 
     var customer = window.parent.customer;
@@ -22,7 +23,7 @@ layui.config({
         $(".note").val(customer.note);
     }
 
- 	form.on("submit(addLinks)",function(data){
+ 	form.on("submit(addCustomer)",function(data){
         var customerId = $(".customerId").val();
         var customerName = $(".customerName").val();
         var customerLevel = $(".customerLevel").val();
