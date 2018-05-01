@@ -23,7 +23,7 @@ public class StockForm {
     /**
      * 型号
      */
-    @NotNull(message = "商品名称不能为空")
+    @NotNull(message = "商品型号不能为空")
     private Integer productSize;
 
     /**
