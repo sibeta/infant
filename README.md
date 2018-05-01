@@ -31,7 +31,7 @@
 
 # 广告植入
 需要批发购买纸尿裤，欢迎联系
-![Alt text](https://github.com/sibeta/infant/raw/master/screenshot/wechat_qrcode.png.png)
+![Alt text](https://github.com/sibeta/infant/raw/master/screenshot/wechat_qrcode.png)
 
 # TODO
 * 加入用户管理 / 引入Shiro做权限验证
