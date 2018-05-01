@@ -17,11 +17,10 @@ layui.config({
     if(typeof stock !== 'undefined') {
         $(".stockId").val(stock.stockId);
 
-        var productSize = $(".type").find("option:contains('" + stock.productSize + "')").val();
-        $(".productSize").val(productSize);
+        $(".productName").val(stock.productName);
 
-        var categoryId = $(".categoryId").find("option:contains('" + stock.categoryId + "')").val();
-        $(".categoryId").val(categoryId);
+        var productSize = $(".productSize").find("option:contains('" + stock.productSize + "')").val();
+        $(".productSize").val(productSize);
 
         form.render('select');
         //$(".customerLevel").find("option:contains('" + customer.customerLevel + "')").attr("selected","selected");

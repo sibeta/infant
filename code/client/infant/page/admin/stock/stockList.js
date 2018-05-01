@@ -52,7 +52,7 @@ layui.config({
 	$("body").on("click",".stock_del",function(){  //删除
         var _this = $(this);
         layer.confirm('确定删除此信息？',{icon:3, title:'提示信息'},function(index){
-            var customerId = _this.attr("data-id");
+            var stockId = _this.attr("data-id");
             var data = {};
             data.stockId = stockId;
 
