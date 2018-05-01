@@ -28,6 +28,11 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
+    public List<Product> findAll() {
+        return productRepository.findAll();
+    }
+
+    @Override
     public Product findOne(Integer productId) {
         return productRepository.findOne(productId);
     }
@@ -62,7 +67,8 @@ public class ProductServiceImpl implements ProductService{
     @Transactional
     public void increaseStock(List<CartDTO> cartDTOList) {
         for(CartDTO cartDTO : cartDTOList) {
-            Product product = productRepository.findOne(cartDTO.getProductId());
+            Product product = productRepository
+                    .findByProductNameAndProductSize(cartDTO.getProductName(), cartDTO.getProductSize());
             if(product == null) {
                 throw new InfantException(ResultEnum.PRODUCT_NOT_EXIST);
             }
@@ -83,7 +89,8 @@ public class ProductServiceImpl implements ProductService{
     @Transactional
     public void decreaseStock(List<CartDTO> cartDTOList) {
         for(CartDTO cartDTO : cartDTOList) {
-            Product product = productRepository.findOne(cartDTO.getProductId());
+            Product product = productRepository
+                    .findByProductNameAndProductSize(cartDTO.getProductName(), cartDTO.getProductSize());
             if(product == null) {
                 throw new InfantException(ResultEnum.PRODUCT_NOT_EXIST);
             }

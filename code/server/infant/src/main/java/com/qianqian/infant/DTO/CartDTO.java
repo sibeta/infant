@@ -5,12 +5,15 @@ import lombok.Data;
 @Data
 public class CartDTO {
 
-    private Integer productId;
+    private String productName;
+
+    private Integer productSize;
 
     private Integer productQuantity;
 
-    public CartDTO(Integer productId, Integer productQuantity) {
-        this.productId = productId;
+    public CartDTO(String productName, Integer productSize, Integer productQuantity) {
+        this.productName = productName;
+        this.productSize = productSize;
         this.productQuantity = productQuantity;
     }
 }

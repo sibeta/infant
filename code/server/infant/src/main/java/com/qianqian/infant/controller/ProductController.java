@@ -1,4 +1,4 @@
-package com.qianqian.infant;
+package com.qianqian.infant.controller;
 
 import com.qianqian.infant.VO.ProductVO;
 import com.qianqian.infant.VO.ResultVO;
@@ -62,6 +62,12 @@ public class ProductController {
         return ResultVOUtil.success(productVOPage);
     }
 
+    @GetMapping(value = "/listall")
+    public ResultVO<List<Product>> listAll() {
+        List<Product> productList = productService.findAll();
+        return ResultVOUtil.success(productList);
+    }
+
     /**
      * 添加/更新
      * @param productForm
@@ -84,7 +90,7 @@ public class ProductController {
         return ResultVOUtil.success();
     }
 
-    /**
+    /*
      * 删除
      * @param productId
      *          productId

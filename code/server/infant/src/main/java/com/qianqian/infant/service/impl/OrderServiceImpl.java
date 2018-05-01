@@ -49,7 +49,7 @@ public class OrderServiceImpl implements OrderService{
         List<OrderDetail> orderDetailList = orderDTO.getOrderDetailList();
         String orderId = KeyUtil.genUniqueKey();
         for(OrderDetail orderDetail : orderDetailList) {
-            Product product = productService.findOne(orderDetail.getProductId());
+            Product product = productService.findByProductNameAndSize(orderDetail.getProductName(), orderDetail.getProductSize());
             if(product == null) {
                 throw new InfantException(ResultEnum.PRODUCT_NOT_EXIST);
             }
@@ -61,6 +61,7 @@ public class OrderServiceImpl implements OrderService{
             orderDetail.setOrderId(orderId);
             orderDetail.setProductSize(product.getProductSize());
             orderDetail.setProductName(product.getProductName());
+            orderDetail.setProductId(product.getProductId());
 
             orderDetailRepository.save(orderDetail);
         }
@@ -75,7 +76,7 @@ public class OrderServiceImpl implements OrderService{
         orderMasterRepository.save(orderMaster);
 
         List<CartDTO> cartDTOList = orderDetailList.stream().map(e ->
-            new CartDTO(e.getProductId(), e.getProductQuantity())
+            new CartDTO(e.getProductName(), e.getProductSize(), e.getProductQuantity())
         ).collect(Collectors.toList());
 
         productService.decreaseStock(cartDTOList);
@@ -112,12 +113,40 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public OrderDTO cancel(OrderDTO orderDTO) {
-        return null;
+    public void finish(String orderId) {
+        OrderMaster orderMaster = orderMasterRepository.findOne(orderId);
+        if(orderMaster == null) {
+            log.error("【完结订单】订单不存在, orderId={}", orderId);
+            throw new InfantException(ResultEnum.ORDER_NOT_EXIST);
+        }
+
+        orderMaster.setPayStatus(PayStatusEnum.FINISHED.getCode());
+        orderMaster.setOrderStatus(OrderStatusEnum.FINISHED.getCode());
+        orderMasterRepository.save(orderMaster);
     }
 
     @Override
-    public OrderDTO finish(OrderDTO orderDTO) {
-        return null;
+    @Transactional
+    public void cancel(String orderId) {
+        OrderMaster orderMaster = orderMasterRepository.findOne(orderId);
+        if(orderMaster == null) {
+            log.error("【取消订单】订单不存在, orderId={}", orderId);
+            throw new InfantException(ResultEnum.ORDER_NOT_EXIST);
+        }
+
+        orderMaster.setOrderStatus(OrderStatusEnum.CANCEL.getCode());
+        orderMasterRepository.save(orderMaster);
+
+        List<OrderDetail> orderDetailList = orderDetailRepository.findByOrderId(orderId);
+        for(OrderDetail orderDetail : orderDetailList) {
+            Integer productId = orderDetail.getProductId();
+            Product product = productService.findOne(productId);
+            if(product == null) {
+                log.error("【取消订单】商品不存在, productId={}", productId);
+                throw new InfantException(ResultEnum.PRODUCT_NOT_EXIST);
+            }
+
+            productService.increaseStock(product, orderDetail.getProductQuantity());
+        }
     }
 }

@@ -3,7 +3,7 @@ package com.qianqian.infant.enums;
 import lombok.Getter;
 
 @Getter
-public enum PayStatusEnum {
+public enum PayStatusEnum implements CodeEnum{
 
     NEW(0, "等待支付"),
     FINISHED(1, "支付成功")

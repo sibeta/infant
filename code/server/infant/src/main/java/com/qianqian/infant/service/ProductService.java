@@ -11,6 +11,8 @@ public interface ProductService {
 
     public Page<Product> findList(String productName, Pageable pageable);
 
+    public List<Product> findAll();
+
     Product findOne(Integer productId);
 
     Product findByProductNameAndSize(String productName, Integer productSize);

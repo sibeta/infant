@@ -23,4 +23,9 @@
 	"icon" : "icon-text",
 	"href" : "page/admin/stock/stockList.html",
 	"spread" : false
+},{
+	"title" : "订单管理",
+	"icon" : "icon-text",
+	"href" : "page/admin/order/orderList.html",
+	"spread" : false
 }]
