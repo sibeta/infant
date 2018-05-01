@@ -40,8 +40,11 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category update(Category category) {
-        Category result = categoryRepository.save(category);
-        return result;
+        try {
+            return categoryRepository.save(category);
+        } catch (Exception e) {
+            throw new InfantException(ResultEnum.SYSTEM_ERROR.getCode(), e.getMessage());
+        }
     }
 
     @Override
