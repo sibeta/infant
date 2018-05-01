@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface StockService {
 
-    public Page<Stock> findList(Integer categoryId, Pageable pageable);
+    public Page<Stock> findList(String productName, Pageable pageable);
 
     Stock findOne(Integer stockId);
 

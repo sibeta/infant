@@ -14,17 +14,15 @@
 <body class="childrenBody">
 	<form class="layui-form" style="width:80%;">
 		<div class="layui-form-item">
-			<label class="layui-form-label">品类名称</label>
+			<label class="layui-form-label">商品名称</label>
 			<div class="layui-input-block">
-				<select class="categoryList categoryId" lay-verify="required">
-					<option value="0">无</option>
-				</select>
+				<input type="text" class="layui-input productName" lay-verify="required" placeholder="请输入商品名称">
 			</div>
 		</div>
 		<div class="layui-form-item">
-			<label class="layui-form-label">类型</label>
+			<label class="layui-form-label">型号</label>
 			<div class="layui-input-block">
-				<select class="type" lay-verify="required">
+				<select class="productSize" lay-verify="required">
 					<option value="0">无</option>
 					<option value="1">小码</option>
 					<option value="2">中码</option>
@@ -38,7 +36,7 @@
 		<div class="layui-form-item">
 			<label class="layui-form-label">数量</label>
 			<div class="layui-input-block">
-				<input type="number" class="layui-input amount" lay-verify="required" placeholder="请输入数量">
+				<input type="number" class="layui-input quantity" lay-verify="required" placeholder="请输入数量">
 			</div>
 		</div>
 		<div class="layui-form-item">

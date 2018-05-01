@@ -1,15 +1,18 @@
 package com.qianqian.infant.service.impl;
 
+import com.qianqian.infant.entity.Product;
 import com.qianqian.infant.entity.Stock;
 import com.qianqian.infant.enums.ResultEnum;
 import com.qianqian.infant.exception.InfantException;
 import com.qianqian.infant.repository.StockRepository;
+import com.qianqian.infant.service.ProductService;
 import com.qianqian.infant.service.StockService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Slf4j
@@ -18,15 +21,12 @@ public class StockServiceImpl implements StockService{
     @Autowired
     private StockRepository stockRepository;
 
+    @Autowired
+    private ProductService productService;
+
     @Override
-    public Page<Stock> findList(Integer categoryId, Pageable pageable) {
-        Page<Stock> stockPage = null;
-        if(categoryId == 0) {
-            stockPage = stockRepository.findAll(pageable);
-        } else {
-            stockPage = stockRepository.findByCategoryId(categoryId, pageable);
-        }
-        return stockPage;
+    public Page<Stock> findList(String productName, Pageable pageable) {
+        return stockRepository.findByProductNameIsLike(productName, pageable);
     }
 
     @Override
@@ -35,7 +35,14 @@ public class StockServiceImpl implements StockService{
     }
 
     @Override
+    @Transactional
     public Stock update(Stock stock) {
+        Integer stockId = stock.getStockId();
+        if(stockId == null) {
+            Product product = productService.findByProductNameAndSize(stock.getProductName(), stock.getProductSize());
+            productService.increaseStock(product, stock.getQuantity());
+        }
+
         Stock result = stockRepository.save(stock);
         return result;
     }

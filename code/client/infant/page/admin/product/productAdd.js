@@ -13,58 +13,51 @@ layui.config({
     }
     renderCategoryList();
 
-    var stock = window.parent.stock;
-    if(typeof stock !== 'undefined') {
-        $(".stockId").val(stock.stockId);
+    var product = window.parent.product;
+    if(typeof product !== 'undefined') {
+        $(".productId").val(product.productId);
 
-        var productSize = $(".type").find("option:contains('" + stock.productSize + "')").val();
-        $(".productSize").val(productSize);
-
-        var categoryId = $(".categoryId").find("option:contains('" + stock.categoryId + "')").val();
+        var categoryId = $(".categoryId").find("option:contains('" + product.categoryId + "')").val();
         $(".categoryId").val(categoryId);
+
+        $(".productName").val(product.productName);
+
+        var productSize = $(".productSize").find("option:contains('" + product.productSize + "')").val();
+        $(".productSize").val(productSize);
 
         form.render('select');
         //$(".customerLevel").find("option:contains('" + customer.customerLevel + "')").attr("selected","selected");
 
-        $(".quantity").val(stock.quantity);
-        $(".quantity").attr("disabled", true);
-
-        $(".unitPrice").val(stock.unitPrice);
-        $(".extraCharges").val(stock.extraCharges);
-        $(".stockDate").val(stock.stockDate);
-        $(".aogDate").val(stock.aogDate);
-        $(".note").val(stock.note);
+        $(".productPrice").val(product.productPrice);
+        $(".productStock").val(product.productStock);
+        $(".description").val(product.description);
     }
 
- 	form.on("submit(addStock)",function(data){
-        var stockId = $(".stockId").val();
+ 	form.on("submit(addProduct)",function(data){
+        var productId = $(".productId").val();
+        var categoryId = $(".categoryId").val();
         var productName = $(".productName").val();
+        var productPrice = $(".productPrice").val();
+        var productStock = $(".productStock").val();
         var productSize = $(".productSize").val();
-        var quantity = $(".quantity").val();
-        var unitPrice = $(".unitPrice").val();
-        var extraCharges = $(".extraCharges").val();
-        var stockDate = $(".stockDate").val();
-        var aogDate = $(".aogDate").val();
-        var note = $(".note").val();
+        var description = $(".description").val();
 
         var formData = {};
-        if(stockId != "") {
-            formData.stockId = parseInt(stockId);
+        if(productId != "") {
+            formData.productId = parseInt(productId);
         }
+        formData.categoryId = categoryId;
         formData.productName = productName;
+        formData.productPrice = productPrice;
+        formData.productStock = productStock;
         formData.productSize = productSize;
-        formData.quantity = quantity;
-        formData.unitPrice = unitPrice;
-        formData.extraCharges = extraCharges;
-        formData.stockDate = stockDate;
-        formData.aogDate = aogDate;
-        formData.note = note;
+        formData.description = description;
 
         //弹出loading
         var index = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
 
         $.ajax({
-            url : config.serverBaseURL + "stock/update",
+            url : config.serverBaseURL + "product/update",
             type : "post",
             data : formData,
             dataType : "json",

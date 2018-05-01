@@ -10,51 +10,41 @@ import java.util.Date;
 
 @Entity
 @Data
-public class Stock {
+public class Product {
 
     @Id
     @GeneratedValue
-    private Integer stockId;
+    private Integer productId;
 
     /**
-     * 商品名称
+     * 产品名称
      */
     private String productName;
 
     /**
-     * 商品型号
+     * 产品价格
+     */
+    private BigDecimal productPrice;
+
+    /**
+     * 库存
+     */
+    private Integer productStock;
+
+    /**
+     * 尺寸
      */
     private Integer productSize;
 
     /**
-     * 数量
+     * 产品描述
      */
-    private Integer quantity;
+    private String description;
 
     /**
-     * 单价
+     * 类目编号
      */
-    private Double unitPrice;
-
-    /**
-     * 额外费用
-     */
-    private Double extraCharges;
-
-    /**
-     * 进货日期
-     */
-    private Date stockDate;
-
-    /**
-     * 到货时间
-     */
-    private Date aogDate;
-
-    /**
-     * 备注
-     */
-    private String note;
+    private Integer categoryId;
 
     private Date createTime;
 

@@ -34,7 +34,6 @@ layui.config({
 	$("body").on("click",".category_del",function(){  //删除
 		var _this = $(this);
 		layer.confirm('确定删除此信息？',{icon:3, title:'提示信息'},function(index){
-			debugger;
 			var categoryId = _this.attr("data-id");
 			var data = {};
 			data.categoryId = categoryId;

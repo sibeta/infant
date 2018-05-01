@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
@@ -14,28 +15,33 @@ public class StockForm {
     private Integer stockId;
 
     /**
-     * 类目Id
+     * 商品名称
      */
-    private Integer categoryId;
+    @NotNull(message = "商品名称不能为空")
+    private String productName;
 
     /**
-     * 类型
+     * 型号
      */
-    private Integer type;
+    @NotNull(message = "商品名称不能为空")
+    private Integer productSize;
 
     /**
      * 数量
      */
-    private Integer amount;
+    @NotNull(message = "商品数量不能为空")
+    private Integer quantity;
 
     /**
      * 单价
      */
+    @NotNull(message = "商品名称不能为空")
     private Double unitPrice;
 
     /**
      * 额外费用
      */
+    @NotNull(message = "商品名称不能为空")
     private Double extraCharges;
 
     /**

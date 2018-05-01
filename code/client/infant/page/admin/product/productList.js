@@ -8,7 +8,7 @@ layui.config({
     	config = layui.config;
 
 	var categoryList = [];
-    var stockData = '';
+    var productData = '';
     getCategoryList();
     getPageData();
 
@@ -23,41 +23,41 @@ layui.config({
         }
 	})
 
-	$(".stockAdd_btn").click(function(){
-        if(typeof window.stock !== 'undefined') {
-            delete window.stock;
+	$(".productAdd_btn").click(function(){
+        if(typeof window.product !== 'undefined') {
+            delete window.product;
         }
 
         if(!window.categoryList) {
             window.categoryList = categoryList;
 		}
 
-        openStockAddView("添加进货信息");
+        openProductAddView("添加商品信息");
 	})
  
 	//操作
-	$("body").on("click",".stock_edit",function(){  //编辑
-        var stockId = $(this).attr("data-id");
-        var stockList = stockData.content;
-        for(var i = 0; i < stockList.length; i++){
-            if(stockList[i].stockId == stockId){
-                window.stock = stockList[i];
+	$("body").on("click",".product_edit",function(){  //编辑
+        var productId = $(this).attr("data-id");
+        var productList = productData.content;
+        for(var i = 0; i < productList.length; i++){
+            if(productList[i].productId == productId){
+                window.product = productList[i];
                 break;
             }
         }
 
-        openStockAddView("编辑进货信息");
+        openProductAddView("编辑商品信息");
 	})
 
-	$("body").on("click",".stock_del",function(){  //删除
+	$("body").on("click",".product_del",function(){  //删除
         var _this = $(this);
         layer.confirm('确定删除此信息？',{icon:3, title:'提示信息'},function(index){
-            var customerId = _this.attr("data-id");
+            var productId = _this.attr("data-id");
             var data = {};
-            data.stockId = stockId;
+            data.productId = productId;
 
             $.ajax({
-                url : config.serverBaseURL + "stock/delete",
+                url : config.serverBaseURL + "product/delete",
                 type : "post",
                 data : data,
                 dataType : "json",
@@ -72,48 +72,30 @@ layui.config({
         });
 	})
 
-    function renderCategoryList(){
-		var len = categoryList.length;
-		for(var i = 0; i < len; i++) {
-			var category = categoryList[i];
-			var html = [];
-			html.push("<option value='");
-			html.push(category.categoryId);
-			html.push("'>");
-			html.push(category.categoryName);
-			html.push("</option>");
-        	$(".categoryList").append($(html.join('')));
-		}
-
-        form.render('select');
-    }
-
-    function renderStockList(){
+    function renderProductList(){
         var dataHtml = '';
-        var currData = stockData.content;
+        var currData = productData.content;
         if(currData.length !== 0){
             for(var i=0;i<currData.length;i++){
                 dataHtml += '<tr>'
-                    +'<td align="left">'+currData[i].productName+'</td>'
+                    +'<td align="left">'+currData[i].categoryId+'</td>'
+                    +'<td>'+currData[i].productName+'</td>'
                     +'<td>'+currData[i].productSize+'</td>'
-                    +'<td>'+currData[i].quantity+'</td>'
-                    +'<td>'+currData[i].unitPrice+'</td>'
-                    +'<td>'+currData[i].extraCharges+'</td>'
-                    +'<td>'+currData[i].stockDate+'</td>'
-                    +'<td>'+currData[i].aogDate+'</td>'
-                    +'<td>'+currData[i].note+'</td>'
+                    +'<td>'+currData[i].productPrice+'</td>'
+                    +'<td>'+currData[i].productStock+'</td>'
+                    +'<td>'+currData[i].description+'</td>'
                     +'<td>'
-                    +  '<a class="layui-btn layui-btn-mini stock_edit" data-id="'+currData[i].stockId+'"><i class="iconfont icon-edit"></i> 编辑</a>'
-                    +  '<a class="layui-btn layui-btn-danger layui-btn-mini stock_del" data-id="'+currData[i].stockId+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
+                    +  '<a class="layui-btn layui-btn-mini product_edit" data-id="'+currData[i].productId+'"><i class="iconfont icon-edit"></i> 编辑</a>'
+                    +  '<a class="layui-btn layui-btn-danger layui-btn-mini product_del" data-id="'+currData[i].productId+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
                     +'</td>'
                     +'</tr>';
             }
         }else{
-            dataHtml = '<tr><td colspan="9">暂无数据</td></tr>';
+            dataHtml = '<tr><td colspan="6">暂无数据</td></tr>';
         }
 
 
-        $(".stock_content").html(dataHtml);
+        $(".product_content").html(dataHtml);
     }
 
     function getCategoryList() {
@@ -125,7 +107,6 @@ layui.config({
                 if(result.code === 0) {
                     categoryList = result.data;
                     window.sessionStorage.setItem("categoryList", JSON.stringify(categoryList));
-                    renderCategoryList();
                 }
             },
             error : function(e) {
@@ -142,15 +123,15 @@ layui.config({
 
         var index = top.layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
         $.ajax({
-            url : config.serverBaseURL + "stock/list",
+            url : config.serverBaseURL + "product/list",
             type : "post",
             data : data,
             dataType : "json",
             success : function(result){
                 top.layer.close(index);
                 if(result.code === 0) {
-                    stockData = result.data;
-                    renderStockList();
+                    productData = result.data;
+                    renderProductList();
                 }
             },
             error : function(e) {
@@ -160,14 +141,14 @@ layui.config({
         })
     }
 
-    function openStockAddView(title) {
+    function openProductAddView(title) {
         var index = layui.layer.open({
             title : title,
             type : 2,
-            content : "stockAdd.html",
+            content : "productAdd.html",
             success : function(layero, index){
                 setTimeout(function(){
-                    layui.layer.tips('点击此处返回进货列表', '.layui-layer-setwin .layui-layer-close', {
+                    layui.layer.tips('点击此处返回商品列表', '.layui-layer-setwin .layui-layer-close', {
                         tips: 3
                     });
                 },500)

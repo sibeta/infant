@@ -14,21 +14,20 @@ public class StockVO {
     private Integer stockId;
 
     /**
-     * 类目Id
+     * 商品名称
      */
-    @JsonSerialize(using = CategorySerializer.class)
-    private Integer categoryId;
+    private String productName;
 
     /**
      * 类型
      */
     @JsonSerialize(using = TypeSerializer.class)
-    private Integer type;
+    private Integer productSize;
 
     /**
      * 数量
      */
-    private Integer amount;
+    private Integer quantity;
 
     /**
      * 单价

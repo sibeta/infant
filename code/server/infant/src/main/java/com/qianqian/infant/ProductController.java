@@ -1,12 +1,12 @@
-package com.qianqian.infant.controller;
+package com.qianqian.infant;
 
+import com.qianqian.infant.VO.ProductVO;
 import com.qianqian.infant.VO.ResultVO;
-import com.qianqian.infant.VO.StockVO;
-import com.qianqian.infant.entity.Stock;
+import com.qianqian.infant.entity.Product;
 import com.qianqian.infant.enums.ResultEnum;
 import com.qianqian.infant.exception.InfantException;
-import com.qianqian.infant.form.StockForm;
-import com.qianqian.infant.service.StockService;
+import com.qianqian.infant.form.ProductForm;
+import com.qianqian.infant.service.ProductService;
 import com.qianqian.infant.utils.ResultVOUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -22,19 +22,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 进货相关
+ * 商品相关
  */
 @RestController
-@RequestMapping("/api/stock")
+@RequestMapping("/api/product")
 @Slf4j
 @CrossOrigin
-public class StockController {
+public class ProductController {
 
     @Autowired
-    private StockService stockService;
+    private ProductService productService;
 
     /**
-     * 分页获取进货列表
+     * 分页获取商品列表
      * @param page
      *          页码，从1开始
      * @param size
@@ -42,56 +42,57 @@ public class StockController {
      * @return
      */
     @PostMapping(value = "/list")
-    public ResultVO<Page<StockVO>> list(@RequestParam(value = "productName", defaultValue = "%") String productName,
+    public ResultVO<Page<ProductVO>> list(@RequestParam(value = "productName", defaultValue = "%") String productName,
                                            @RequestParam(value = "page", defaultValue = "1") Integer page,
                                            @RequestParam(value = "size", defaultValue = "7") Integer size) {
         PageRequest request = new PageRequest(page - 1, size);
+        log.info("productName={}", productName);
         if(!productName.contains("%")) {
             productName = "%" + productName + "%";
         }
-        Page<Stock> stockPage = stockService.findList(productName, request);
-        List<StockVO> stockVOList = new ArrayList<>();
-        for(Stock stock : stockPage.getContent()) {
-            StockVO stockVO = new StockVO();
-            BeanUtils.copyProperties(stock, stockVO);
-            stockVOList.add(stockVO);
+        Page<Product> productPage = productService.findList(productName, request);
+        List<ProductVO> productVOList = new ArrayList<>();
+        for(Product product : productPage.getContent()) {
+            ProductVO productVO = new ProductVO();
+            BeanUtils.copyProperties(product, productVO);
+            productVOList.add(productVO);
         }
 
-        Page<StockVO> stockVOPage = new PageImpl<StockVO>(stockVOList, request, stockPage.getTotalElements());
-        return ResultVOUtil.success(stockVOPage);
+        Page<ProductVO> productVOPage = new PageImpl<ProductVO>(productVOList, request, productPage.getTotalElements());
+        return ResultVOUtil.success(productVOPage);
     }
 
     /**
      * 添加/更新
-     * @param stockForm
-     *          stockForm
+     * @param productForm
+     *          productForm
      * @param bindingResult
      *          bindingResult
      * @return
      */
     @PostMapping(value = "/update")
-    public ResultVO<Boolean> update(@Valid StockForm stockForm, BindingResult bindingResult) {
+    public ResultVO<Boolean> update(@Valid ProductForm productForm, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
-            log.error("【进货管理】参数错误, error={}", bindingResult.getFieldError().getDefaultMessage());
+            log.error("【商品管理】参数错误, error={}", bindingResult.getFieldError().getDefaultMessage());
             throw new InfantException(ResultEnum.PARAM_ERROR);
         }
 
-        Stock stock = new Stock();
-        BeanUtils.copyProperties(stockForm, stock);
-        stockService.update(stock);
+        Product product = new Product();
+        BeanUtils.copyProperties(productForm, product);
+        productService.update(product);
 
         return ResultVOUtil.success();
     }
 
     /**
-     * 删除类目
-     * @param stockId
-     *          stockId
+     * 删除
+     * @param productId
+     *          productId
      * @return
      */
     @PostMapping(value = "/delete")
-    public ResultVO delete(Integer stockId) {
-        stockService.delete(stockId);
+    public ResultVO delete(Integer productId) {
+        productService.delete(productId);
         return ResultVOUtil.success();
     }
 

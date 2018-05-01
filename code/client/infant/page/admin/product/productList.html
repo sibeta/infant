@@ -20,7 +20,7 @@
 			<a class="layui-btn search_btn">查询</a>
 		</div>
 		<div class="layui-inline">
-			<a class="layui-btn stockAdd_btn" style="background-color:#5FB878">添加</a>
+			<a class="layui-btn productAdd_btn" style="background-color:#5FB878">添加</a>
 		</div>
 	</blockquote>
 	<div class="layui-form links_list">
@@ -31,30 +31,26 @@
 				<col>
 				<col>
 				<col>
-				<col>
-				<col>
 				<col width="30%">
 				<col width="14%">
 		    </colgroup>
 		    <thead>
 				<tr>
-					<th style="text-align:left;">商品名称</th>
+					<th style="text-align:left;">所属品类</th>
+					<th>商品名称</th>
 					<th>型号</th>
-					<th>数量</th>
-					<th>单价</th>
-					<th>额外费用</th>
-					<th>进货时间</th>
-					<th>到货时间</th>
+					<th>价格</th>
+					<th>库存</th>
 					<th>备注</th>
 					<th>操作</th>
 				</tr> 
 		    </thead>
-		    <tbody class="stock_content"></tbody>
+		    <tbody class="product_content"></tbody>
 		</table>
 	</div>
 	<div id="page"></div>
 	
 	<script type="text/javascript" src="../../../../layui/layui.js"></script>
-	<script type="text/javascript" src="stockList.js"></script>
+	<script type="text/javascript" src="productList.js"></script>
 </body>
 </html>

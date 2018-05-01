@@ -29,9 +29,9 @@ public class StockRepositoryTest {
     }
 
     @Test
-    public void findByCategoryIdTest() throws Exception {
+    public void findByProductNameTest() throws Exception {
         PageRequest request = new PageRequest(0, 2);
-        Page<Stock> stockPage = stockRepository.findByCategoryId(2, request);
+        Page<Stock> stockPage = stockRepository.findByProductNameIsLike("%纸尿%", request);
         Assert.assertTrue(stockPage.getContent().size() > 0);
     }
 
@@ -44,9 +44,9 @@ public class StockRepositoryTest {
     @Test
     public void insertTest() throws Exception {
         Stock stock = new Stock();
-        stock.setType(TypeEnum.L.getCode());
-        stock.setAmount(20);
-        stock.setCategoryId(1);
+        stock.setProductSize(TypeEnum.L.getCode());
+        stock.setQuantity(20);
+        stock.setProductName("纸尿裤");
         stock.setExtraCharges(0.0);
         stock.setUnitPrice(20.0);
         stock.setStockDate(new Date());
@@ -59,7 +59,7 @@ public class StockRepositoryTest {
     @Test
     public void updateTest() throws Exception {
         Stock stock = stockRepository.findOne(1);
-        stock.setType(TypeEnum.M.getCode());
+        stock.setProductSize(TypeEnum.M.getCode());
         stock.setNote("给vip");
 
         Stock result = stockRepository.save(stock);
