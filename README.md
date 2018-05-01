@@ -29,6 +29,10 @@
 ![Alt text](https://github.com/sibeta/infant/raw/master/screenshot/10.png)
 ![Alt text](https://github.com/sibeta/infant/raw/master/screenshot/11.png)
 
+# 广告植入
+需要批发购买纸尿裤，欢迎联系
+![Alt text](https://github.com/sibeta/infant/raw/master/screenshot/wechat_qrcode.png.png)
+
 # TODO
 * 加入用户管理 / 引入Shiro做权限验证
 * 加入数据分析统计功能，引入echart做数据可视化
