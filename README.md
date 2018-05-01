@@ -17,7 +17,17 @@
 * 订单管理
 
 # 效果截图
-
+![Alt text](https://github.com/sibeta/infant/raw/master/screenshot/1.png)
+![Alt text](https://github.com/sibeta/infant/raw/master/screenshot/2.png)
+![Alt text](https://github.com/sibeta/infant/raw/master/screenshot/3.png)
+![Alt text](https://github.com/sibeta/infant/raw/master/screenshot/4.png)
+![Alt text](https://github.com/sibeta/infant/raw/master/screenshot/5.png)
+![Alt text](https://github.com/sibeta/infant/raw/master/screenshot/6.png)
+![Alt text](https://github.com/sibeta/infant/raw/master/screenshot/7.png)
+![Alt text](https://github.com/sibeta/infant/raw/master/screenshot/8.png)
+![Alt text](https://github.com/sibeta/infant/raw/master/screenshot/9.png)
+![Alt text](https://github.com/sibeta/infant/raw/master/screenshot/10.png)
+![Alt text](https://github.com/sibeta/infant/raw/master/screenshot/11.png)
 
 # TODO
 * 加入用户管理 / 引入Shiro做权限验证
