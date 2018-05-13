@@ -15,6 +15,8 @@ public enum ResultEnum {
     PRODUCT_STOCK_ERROR(24, "库存错误"),
     ORDER_NOT_EXIST(25, "订单不存在"),
     CART_EMPTY(26, "购物车为空"),
+    USER_NOT_EXIST(27, "用户不存在"),
+    PASSWORD_ERROR(28, "密码错误"),
     ;
 
     private Integer code;

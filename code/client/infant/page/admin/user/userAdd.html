@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>添加用户信息</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="../../../layui/css/layui.css" media="all" />
+</head>
+<body class="childrenBody">
+	<form class="layui-form" style="width:80%;">
+		<div class="layui-form-item">
+			<label class="layui-form-label">用户名称</label>
+			<div class="layui-input-block">
+				<input type="text" class="layui-input username" lay-verify="required" placeholder="请输入用户名称">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">用户昵称</label>
+			<div class="layui-input-block">
+				<input type="text" class="layui-input useralias" lay-verify="required" placeholder="请输入用户昵称">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">密码</label>
+			<div class="layui-input-block">
+				<input type="password" class="layui-input password" lay-verify="required" placeholder="请输入密码">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">角色</label>
+			<div class="layui-input-block">
+				<select class="role" name="role" lay-verify="required">
+					<option value="0">超级管理员</option>
+					<option value="1">普通管理员</option>
+					<option value="2">普通用户</option>
+				</select>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn" lay-submit="" lay-filter="addUser">立即提交</button>
+				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+		    </div>
+		</div>
+		<input type="hidden" class="layui-input userId" />
+	</form>
+	<script type="text/javascript" src="../../../layui/layui.js"></script>
+	<script type="text/javascript" src="userAdd.js"></script>
+</body>
+</html>

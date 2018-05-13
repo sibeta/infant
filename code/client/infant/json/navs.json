@@ -28,4 +28,9 @@
 	"icon" : "icon-text",
 	"href" : "page/admin/order/orderList.html",
 	"spread" : false
+},{
+	"title" : "用户管理",
+	"icon" : "icon-text",
+	"href" : "page/admin/user/userList.html",
+	"spread" : false
 }]

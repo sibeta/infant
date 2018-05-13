@@ -84,3 +84,16 @@ create table `order_detail` (
     primary key (`detail_id`),
     key `idx_order_id` (`order_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '订单详情表';
+
+DROP TABLE IF EXISTS `user`;
+create table `user` (
+    `user_id` int(8) not null AUTO_INCREMENT COMMENT '主键',
+    `username` varchar(32) not null COMMENT '用户名称',
+    `useralias` varchar(32) NOT NULL COMMENT '用户昵称',
+    `password` varchar(256) NOT NULL COMMENT '密码',
+    `role` tinyint(4) NOT NULL COMMENT '角色',
+    `avatar` longtext COLLATE utf8_bin DEFAULT NULL COMMENT '头像',
+    `create_time` timestamp not null default current_timestamp comment '创建时间',
+    `update_time` timestamp not null default current_timestamp on update current_timestamp comment '修改时间',
+    primary key (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '用户表';

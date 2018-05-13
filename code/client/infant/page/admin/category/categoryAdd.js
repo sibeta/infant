@@ -39,6 +39,8 @@ layui.config({
                     layer.closeAll("iframe");
                     //刷新父页面
                     parent.location.reload();
+                } else {
+                    top.layer.msg(result.msg);
                 }
             },
 			error : function(e) {
